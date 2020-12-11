@@ -14,7 +14,14 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Vous êtes maintenant connécté') }}
+
+                    <div>
+                        <a type="button"
+                            class="border border-purple-500 bg-purple-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-purple-600 focus:outline-none focus:shadow-outline"
+                            href="{{ URL::action('PostController@index') }}">Continuer
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

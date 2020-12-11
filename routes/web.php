@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/comments/{sujet}', 'CommentaireController@store')->name('comments.store');
 
+Route::delete('/comments/{comment}', 'CommentaireController@destroy')->name('comments.destroy');
 
 Route::get('/posts', 'PostController@index');
 Route::get('posts/create', 'PostController@create');
