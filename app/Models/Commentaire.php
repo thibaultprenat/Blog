@@ -11,14 +11,14 @@ class Commentaire extends Model
 
     protected $guarded = [];
 
-    public function commentable()
-    {
-        return $this->morphTo();
-    }
-
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
+    }
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
     }
         
     

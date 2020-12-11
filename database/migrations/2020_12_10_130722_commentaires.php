@@ -16,9 +16,8 @@ class Commentaires extends Migration
         Schema::create('commentaires', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('contenu');
-            $table->unsignedBigInteger('user_id');
-            $table->integer('commentable_id');
-            $table->string('commentable_type');
+            $table->foreignId('user_id');
+            $table->foreignId('post_id');
             $table->timestamps();
         });
     }

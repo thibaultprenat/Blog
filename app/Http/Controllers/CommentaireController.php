@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Models\Post;
+use App\Models\Post;
 use App\Models\Commentaire;
 
 use Illuminate\Http\Request;
@@ -14,20 +14,21 @@ class CommentaireController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Post $post)
+    public function store(request $request)
     {
-        request()->validate([
-            'contenu' => 'required|min:2'
+
+        $valid = $request->validate([
+            'contenu' => 'required|min:2',
+            'post_id' => 'exists:post,id'
 
         ]);
-
         $comment = new Commentaire();
-        $comment->contenu = request('contenu');
+        $comment->contenu = $valid['contenu'];
+        $comment->post_id = $valid['post_id'];
         $comment->user_id = auth()->user()->id;
+        $comment->save();
 
-        $post->comments()->save($comment);
-
-        return redirect()->route('Post', $post);
+        return Back();
     }
 
     public function destroy(Commentaire $comment)

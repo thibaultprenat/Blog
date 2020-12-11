@@ -52,9 +52,10 @@
     <div class="alert alert-info">Aucun Commentaire pour ce sujet</div>
 
     @endforelse
-
-    <form action="{{route('comments.store', $post)}}" method="POST" class="mt-3">
+    <h5>Commentaires ({{count($post->comments)}})</h5>
+    <form action="{{route('comments.store')}}" method="POST" class="mt-3">
         @csrf
+        <input type="hidden" name="post_id" value="{{ $post->id }}">
         <div class="form-group">
             <label for="content">Votre commentaire </label>
             <textarea class="form-control @error ('contenu') is-invalid @enderror" name="contenu" id="contenu"

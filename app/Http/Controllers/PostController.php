@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Models\Post;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,9 +12,14 @@ class PostController extends Controller
         return view('posts', compact('posts')); 
     }
 
+    public function show(Post $post)
+    {
+        return view('Post', compact('post'));
+    }
+
     public function view($id){
         $post = Post::where('id', $id)->firstOrFail();
-        return view('post', compact('post'));
+        return view('Post', compact('post'));
      }
 
      public function edit($id){
