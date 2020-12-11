@@ -28,7 +28,7 @@ class CommentaireController extends Controller
         $comment->user_id = auth()->user()->id;
         $comment->save();
 
-        return Back();
+        return redirect()->Back();
     }
 
     public function destroy(Commentaire $comment)
